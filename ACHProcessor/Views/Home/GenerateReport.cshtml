@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ACHPaymentWeb.Models.TransactionReport>
+
+@{
+	ViewBag.Title = "Transaction report";
+}
+
+<h2>Transaction report</h2>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.TransactionreferenceNumber)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalAmount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.AcountNumber)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TransactionStatus)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateOfTransaction)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CustomerName)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.TransactionreferenceNumber)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TotalAmount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.AcountNumber)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TransactionStatus)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfTransaction)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CustomerName)
+			</td>
+			<td>
+				@Html.ActionLink("Void Transaction", "VoidTransaction", new { referenceNumber = item.TransactionreferenceNumber }) |
+			</td>
+		</tr>
+	}
+
+</table>
