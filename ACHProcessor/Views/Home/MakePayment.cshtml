@@ -21,13 +21,21 @@
 				</div>
 			</div>*@
 
-		<div class="form-group">
-			@Html.LabelFor(model => model.AccountNumber, "Account Number", htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
-			</div>
-		</div>
+	    <div class="form-group">
+	        @Html.LabelFor(model => model.AccountNumber, "Account Number", htmlAttributes: new { @class = "control-label col-md-2" })
+	        <div class="col-md-10">
+	            @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
+	            @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
+	        </div>
+	    </div>
+
+	    <div class="form-group">
+	        @Html.LabelFor(model => model.RoutingNumber, "Routing Number", htmlAttributes: new { @class = "control-label col-md-2" })
+	        <div class="col-md-10">
+	            @Html.EditorFor(model => model.RoutingNumber, new { htmlAttributes = new { @class = "form-control" } })
+	            @Html.ValidationMessageFor(model => model.RoutingNumber, "", new { @class = "text-danger" })
+	        </div>
+	    </div>
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.AccountType, "Account Type", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -37,8 +45,24 @@
 				@Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
 			</div>
 		</div>
+        
+	    <div class="form-group">
+	        @Html.LabelFor(model => model.TransactionNumber, "Transaction Number", htmlAttributes: new { @class = "control-label col-md-2" })
+	        <div class="col-md-10">
+	            @Html.EditorFor(model => model.TransactionNumber, new { htmlAttributes = new { @class = "form-control" } })
+	            @Html.ValidationMessageFor(model => model.TransactionNumber, "", new { @class = "text-danger" })
+	        </div>
+	    </div>
+        
+	    <div class="form-group">
+	        @Html.LabelFor(model => model.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+	        <div class="col-md-10">
+	            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+	            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+	        </div>
+	    </div>
 
-		@*<div class="form-group">
+	    @*<div class="form-group">
 				@Html.LabelFor(model => model.PaymentOrigin, "Payment Origin", htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
 					@Html.EditorFor(model => model.PaymentOrigin, new { htmlAttributes = new { @class = "form-control" } })
@@ -78,13 +102,7 @@
 				</div>
 			</div>*@
 
-		<div class="form-group">
-			@Html.LabelFor(model => model.RoutingNumber, "Routing Number", htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.RoutingNumber, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.RoutingNumber, "", new { @class = "text-danger" })
-			</div>
-		</div>
+		
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.NameOnAccount, "Name On Account", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -135,12 +153,12 @@
 			form.validate();
 			if (form.valid()) {
 
-				$('#showTransactionResponse').html('')
+                $('#showTransactionResponse').html('');
 				$('#showTransactionResponse').hide();
 
 				$.ajax(
 					{
-						url: '@Url.Action("MakePayment", "Home")',
+						url: '/Home/MakePayment',
 						data: $("#TranForm").serialize(),
 						dataType: "json",
 						cache: false,
@@ -149,12 +167,12 @@
 							if (data != null) {
 								if (data.Success == true) { data.ResponseMessage = "Payment Done Successfully !" }
 								var message = data.ResponseMessage;
-								$('#showTransactionResponse').html(message)
+							    $('#showTransactionResponse').html(message);
 								$('#showTransactionResponse').show();
 							}
 						},
 						error: function (error) {
-							$('#showTransactionResponse').html(JSON.stringify(error))
+						    $('#showTransactionResponse').html(JSON.stringify(error));
 							$('#showTransactionResponse').show();
 						}
 					});

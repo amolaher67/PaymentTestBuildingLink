@@ -351,6 +351,7 @@
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Connected Services\TransactionProcessingService\TransactionProcessing.wsdl" />
     <None Include="Connected Services\TrsansactionReportingService\TransactionReporting.wsdl" />
+    <None Include="Properties\PublishProfiles\ACHProcessorUI20190620032809 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

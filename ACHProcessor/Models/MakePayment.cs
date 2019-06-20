@@ -36,5 +36,14 @@ namespace ACHProcessor.Models
 
 		[Required(ErrorMessage = "Please select Business Payment")]
 		public bool IsBusinessPayment { get; set; }
-	}
+
+	    [Required(ErrorMessage = "Please Enter TransactionNumber")]
+	    [StringLength(20, ErrorMessage = "TransactionNumberr exceding the length")]
+        public  string TransactionNumber { get; set; }
+
+	    [Required(ErrorMessage = "Please Enter Description")]
+	    [StringLength(20, ErrorMessage = "Description exceding the length")]
+	    public string Description { get; set; } 
+        
+    }
 }
